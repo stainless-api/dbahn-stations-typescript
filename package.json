@@ -1,6 +1,6 @@
 {
   "name": "dbahn-stations",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "The official TypeScript library for the Dbahn Stations API",
   "author": "Dbahn Stations <StaDa.API@deutschebahn.com>",
   "types": "dist/index.d.ts",
