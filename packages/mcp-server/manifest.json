@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stainless-sdks/dbahn-stations-typescript.git"
+    "url": "git+https://github.com/stainless-api/dbahn-stations-typescript.git"
   },
-  "homepage": "https://github.com/stainless-sdks/dbahn-stations-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/stainless-api/dbahn-stations-typescript/tree/main/packages/mcp-server#readme",
   "documentation": "https://docs.dbahn-stations.com",
   "server": {
     "type": "node",
