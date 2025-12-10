@@ -34,7 +34,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'dbahn_stations_api',
-      version: '0.0.1',
+      version: '1.0.0',
     },
     { capabilities: { tools: {}, logging: {} } },
   );
