@@ -1,4 +1,4 @@
 configured_endpoints: 4
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/references%2Fdbahn-stations-2a72886a1ec37a86550e3c5137230284269a32a606b28816e214905c8b06f677.yml
 openapi_spec_hash: 7c2a8cbfc4afd14d0ea8dbb3c3eb2e6a
-config_hash: 5d8388386b6c9f4327ca7e907de5078f
+config_hash: 05f9ba56e7143961fa36c22bada6d450
