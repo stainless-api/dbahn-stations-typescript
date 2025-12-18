@@ -38,6 +38,7 @@ export async function codeTool() {
         client_envs: JSON.stringify({
           DBAHN_STATIONS_CLIENT_ID: readEnv('DBAHN_STATIONS_CLIENT_ID'),
           DBAHN_STATIONS_CLIENT_SECRET: readEnv('DBAHN_STATIONS_CLIENT_SECRET'),
+          DBAHN_STATIONS_BASE_URL: readEnv('DBAHN_STATIONS_BASE_URL'),
         }),
       },
       body: JSON.stringify({
