@@ -2,7 +2,7 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv } from './server';
+import { readEnv, readEnvOrError } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 /**
  * A tool that runs code against a copy of the SDK.
@@ -36,8 +36,8 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          DBAHN_STATIONS_CLIENT_ID: readEnv('DBAHN_STATIONS_CLIENT_ID'),
-          DBAHN_STATIONS_CLIENT_SECRET: readEnv('DBAHN_STATIONS_CLIENT_SECRET'),
+          DBAHN_STATIONS_CLIENT_ID: readEnvOrError('DBAHN_STATIONS_CLIENT_ID'),
+          DBAHN_STATIONS_CLIENT_SECRET: readEnvOrError('DBAHN_STATIONS_CLIENT_SECRET'),
           DBAHN_STATIONS_BASE_URL: readEnv('DBAHN_STATIONS_BASE_URL'),
         }),
       },
