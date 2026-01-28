@@ -4,6 +4,7 @@ import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult }
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import { readEnv, readEnvOrError } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
+import { DbahnStations } from 'dbahn-stations';
 
 const prompt = `Runs JavaScript code to interact with the Dbahn Stations API.
 
@@ -54,7 +55,7 @@ export function codeTool(): McpTool {
       required: ['code'],
     },
   };
-  const handler = async (_: unknown, args: any): Promise<ToolCallResult> => {
+  const handler = async (client: DbahnStations, args: any): Promise<ToolCallResult> => {
     const code = args.code as string;
     const intent = args.intent as string | undefined;
 
@@ -70,9 +71,11 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          DBAHN_STATIONS_CLIENT_ID: readEnvOrError('DBAHN_STATIONS_CLIENT_ID'),
-          DBAHN_STATIONS_CLIENT_SECRET: readEnvOrError('DBAHN_STATIONS_CLIENT_SECRET'),
-          DBAHN_STATIONS_BASE_URL: readEnv('DBAHN_STATIONS_BASE_URL'),
+          DBAHN_STATIONS_CLIENT_ID:
+            readEnvOrError('DBAHN_STATIONS_CLIENT_ID') ?? client.clientID ?? undefined,
+          DBAHN_STATIONS_CLIENT_SECRET:
+            readEnvOrError('DBAHN_STATIONS_CLIENT_SECRET') ?? client.clientSecret ?? undefined,
+          DBAHN_STATIONS_BASE_URL: readEnv('DBAHN_STATIONS_BASE_URL') ?? client.baseURL ?? undefined,
         }),
       },
       body: JSON.stringify({
