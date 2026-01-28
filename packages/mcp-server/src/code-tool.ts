@@ -2,7 +2,7 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv, readEnvOrError } from './server';
+import { readEnv, requireValue } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 import { DbahnStations } from 'dbahn-stations';
 
@@ -71,10 +71,14 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          DBAHN_STATIONS_CLIENT_ID:
-            readEnvOrError('DBAHN_STATIONS_CLIENT_ID') ?? client.clientID ?? undefined,
-          DBAHN_STATIONS_CLIENT_SECRET:
-            readEnvOrError('DBAHN_STATIONS_CLIENT_SECRET') ?? client.clientSecret ?? undefined,
+          DBAHN_STATIONS_CLIENT_ID: requireValue(
+            readEnv('DBAHN_STATIONS_CLIENT_ID') ?? client.clientID,
+            'set DBAHN_STATIONS_CLIENT_ID environment variable or provide clientID client option',
+          ),
+          DBAHN_STATIONS_CLIENT_SECRET: requireValue(
+            readEnv('DBAHN_STATIONS_CLIENT_SECRET') ?? client.clientSecret,
+            'set DBAHN_STATIONS_CLIENT_SECRET environment variable or provide clientSecret client option',
+          ),
           DBAHN_STATIONS_BASE_URL: readEnv('DBAHN_STATIONS_BASE_URL') ?? client.baseURL ?? undefined,
         }),
       },
