@@ -41,14 +41,14 @@ For clients with a configuration JSON, it might look something like this:
 If you use Cursor, you can install the MCP server by using the button below. You will need to set your environment variables
 in Cursor's `mcp.json`, which can be found in Cursor Settings > Tools & MCP > New MCP Server.
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=dbahn-stations-mcp&config=eyJuYW1lIjoiZGJhaG4tc3RhdGlvbnMtbWNwIiwidHJhbnNwb3J0Ijoic3NlIiwidXJsIjoiaHR0cHM6Ly9kYmFobi1zdGF0aW9ucy5zdGxtY3AuY29tL3NzZSIsImVudiI6eyJEQkFITl9TVEFUSU9OU19DTElFTlRfSUQiOiJTZXQgeW91ciBEQkFITl9TVEFUSU9OU19DTElFTlRfSUQgaGVyZS4iLCJEQkFITl9TVEFUSU9OU19DTElFTlRfU0VDUkVUIjoiU2V0IHlvdXIgREJBSE5fU1RBVElPTlNfQ0xJRU5UX1NFQ1JFVCBoZXJlLiJ9fQ)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=dbahn-stations-mcp&config=eyJuYW1lIjoiZGJhaG4tc3RhdGlvbnMtbWNwIiwidHJhbnNwb3J0IjoiaHR0cCIsInVybCI6Imh0dHBzOi8vZGJhaG4tc3RhdGlvbnMuc3RsbWNwLmNvbSIsImhlYWRlcnMiOnsiREItQ2xpZW50LUlEIjoiTXkgQ2xpZW50IElEIiwiREItQXBpLUtleSI6Ik15IENsaWVudCBTZWNyZXQifX0)
 
 ### VS Code
 
 If you use MCP, you can install the MCP server by clicking the link below. You will need to set your environment variables
 in VS Code's `mcp.json`, which can be found via Command Palette > MCP: Open User Configuration.
 
-[Open VS Code](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22dbahn-stations-mcp%22%2C%22type%22%3A%22sse%22%2C%22url%22%3A%22https%3A%2F%2Fdbahn-stations.stlmcp.com%2Fsse%22%2C%22env%22%3A%7B%22DBAHN_STATIONS_CLIENT_ID%22%3A%22Set%20your%20DBAHN_STATIONS_CLIENT_ID%20here.%22%2C%22DBAHN_STATIONS_CLIENT_SECRET%22%3A%22Set%20your%20DBAHN_STATIONS_CLIENT_SECRET%20here.%22%7D%7D)
+[Open VS Code](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22dbahn-stations-mcp%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fdbahn-stations.stlmcp.com%22%2C%22headers%22%3A%7B%22DB-Client-ID%22%3A%22My%20Client%20ID%22%2C%22DB-Api-Key%22%3A%22My%20Client%20Secret%22%7D%7D)
 
 ### Claude Code
 
@@ -56,7 +56,7 @@ If you use Claude Code, you can install the MCP server by running the command be
 environment variables in Claude Code's `.claude.json`, which can be found in your home directory.
 
 ```
-claude mcp add dbahn_stations_mcp_api --env DBAHN_STATIONS_CLIENT_ID="Your DBAHN_STATIONS_CLIENT_ID here." DBAHN_STATIONS_CLIENT_SECRET="Your DBAHN_STATIONS_CLIENT_SECRET here." --transport sse https://dbahn-stations.stlmcp.com/sse
+claude mcp add dbahn_stations_mcp_api --header "DB-Client-ID: My Client ID" --header "DB-Api-Key: My Client Secret" --transport http https://dbahn-stations.stlmcp.com
 ```
 
 ## Code Mode
