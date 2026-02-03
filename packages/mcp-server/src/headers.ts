@@ -3,7 +3,7 @@
 import { IncomingMessage } from 'node:http';
 import { ClientOptions } from 'dbahn-stations';
 
-export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
+export const parseAuthHeaders = (req: IncomingMessage, required?: boolean): Partial<ClientOptions> => {
   const clientID =
     Array.isArray(req.headers['db-client-id']) ? req.headers['db-client-id'][0] : req.headers['db-client-id'];
   const clientSecret =
