@@ -57,7 +57,7 @@ export const newMcpServer = async () =>
   new McpServer(
     {
       name: 'dbahn_stations_api',
-      version: '1.0.0',
+      version: '2.0.0',
     },
     {
       instructions: await getInstructions(),
